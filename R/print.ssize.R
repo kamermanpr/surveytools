@@ -4,18 +4,20 @@
 #'
 #' @param x Class 'ssize' object to print
 #'
-#' @return
+#' @param ... Further arguments passed to or from other methods.
+#'
+#' @return None
 #'
 #' @export
 #'
 #' @examples
 #' \dontrun{
 #' library(surveytools)
-#' foo <- survey_size(population = 400)
+#' foo <- survey_size(population_size = 400)
 #' print(foo)
 #' }
 
-print.ssize <- function(x) {
+print.ssize <- function(x, ...) {
     cat('SURVEY SIZE CALCULATION\n\n',
               'Population size (N):', x$population_size, '\n',
               'Required sample size (n):', x$required_sample, '\n\n',
