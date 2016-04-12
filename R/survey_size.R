@@ -38,26 +38,28 @@
 survey_size <- function(error_margin = 0.05,
                         conf_level = 0.95,
                         response_distr = 0.5,
-                        population_size = 20000) {
-    z <- qnorm(1 - ((1 - conf_level) / 2)) # critical z-score for confidence level
+                        population_size = NULL) {
+    cl <- conf_level
+    z <- qnorm(1 - ((1 - cl) / 2)) # critical z-score for confidence level
     e <- error_margin
     r <- response_distr
     N <- population_size
 
+    if(is.null(N)){
+        stop('Specify population size. See \'?survey_size\'', call. = TRUE)
+    } else {
     x <- z^2 * r * (1- r)
     numerator <- N * x
     denominator <- (N - 1) * e^2 + x
     sample_size <- round(numerator / denominator)
-    Values <- c(100 * e,
-               100 * conf_level,
-               100 * r,
-               N,
-               sample_size)
-    Variable <- c('Margin of error (%)',
-               'Confidence level (%)',
-               'Response distribution (%)',
-               'Population size (count)',
-               'Survey sample (count)')
-    tab.3 <- as.table(cbind(Variable, Values))
-    tab.3
+
+    sample_lst <- list(required_sample = sample_size,
+                       error_margin = e,
+                       confidence_level = cl,
+                       critical_z_score = z,
+                       response_distribution = r,
+                       population_size = N)
+    }
+    print(sample_lst$required_sample)
 }
+
