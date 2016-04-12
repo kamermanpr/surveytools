@@ -26,14 +26,17 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' # Calculate sample size using the defaults
-#' survey_size() # sample size = 377
+#' survey_size(population_size = 20000) # sample size = 377
 #'
 #' # Calculate the sample size required for a survey of a group of
 #' # specialist physicians (population = 450), with a margin of error of
 #' # 10%, and a confidence level of 99%. Assume the response distribution
 #' # is 50%.
-#' survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450) # sample size = 121
+#' survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450)
+#' # sample size = 121
+#' }
 
 survey_size <- function(error_margin = 0.05,
                         conf_level = 0.95,
@@ -53,14 +56,15 @@ survey_size <- function(error_margin = 0.05,
     denominator <- (N - 1) * e^2 + x
     sample_size <- round(numerator / denominator)
 
-    sample_lst <- list(required_sample = sample_size,
+    sample_lst <- list(population_size = N,
+                       required_sample = sample_size,
                        error_margin = e,
                        confidence_level = cl,
                        critical_z_score = z,
-                       response_distribution = r,
-                       population_size = N)
+                       response_distribution = r)
     }
+    class(sample_lst) <- 'ssize'
     invisible(sample_lst)
-    print(sample_lst$required_sample, sample_lst$error_margin)
+    sample_lst
 }
 
