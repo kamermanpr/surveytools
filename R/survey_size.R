@@ -60,6 +60,7 @@ survey_size <- function(error_margin = 0.05,
                        response_distribution = r,
                        population_size = N)
     }
-    print(sample_lst$required_sample)
+    invisible(sample_lst)
+    print(sample_lst$required_sample, sample_lst$error_margin)
 }
 
