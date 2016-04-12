@@ -35,14 +35,17 @@ imputs of margin of error, confidence level, response distribution, and
 population size.
 }
 \examples{
+\dontrun{
 # Calculate sample size using the defaults
-survey_size() # sample size = 377
+survey_size(population_size = 20000) # sample size = 377
 
 # Calculate the sample size required for a survey of a group of
 # specialist physicians (population = 450), with a margin of error of
 # 10\%, and a confidence level of 99\%. Assume the response distribution
 # is 50\%.
-survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450) # sample size = 121
+survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450)
+# sample size = 121
+}
 }
 \keyword{sample}
 \keyword{size}
