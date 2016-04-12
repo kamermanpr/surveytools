@@ -24,7 +24,7 @@ question. Defaults to 0.5: either answer is equally likely to be
 chosen.}
 
 \item{population_size}{Estimated size of the population being surveyed.
-Defaults to 20,000}
+Defaults to NULL. The function produce an error if a \code{population_size} value is not specified.}
 }
 \value{
 None
@@ -47,6 +47,4 @@ survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450)
 # sample size = 121
 }
 }
-\keyword{sample}
-\keyword{size}
 
