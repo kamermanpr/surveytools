@@ -5,7 +5,7 @@
 \title{Calculate the sample size of a survey.}
 \usage{
 survey_size(error_margin = 0.05, conf_level = 0.95, response_distr = 0.5,
-  population_size = 20000)
+  population_size = NULL)
 }
 \arguments{
 \item{error_margin}{The amount of error that can be tolerated, where the
