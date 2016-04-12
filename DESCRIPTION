@@ -4,8 +4,9 @@ Title: Miscellaneous tools for market research
 Version: 0.1.0
 Author: Peter Kamerman
 Maintainer: Peter Kamerman <peter.kamerman@gmail.com>
-Description: Determine survey sample size 
+Description: A collection of functions for designing and analysing market research surveys.
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 5.0.1
 Suggests: testthat
