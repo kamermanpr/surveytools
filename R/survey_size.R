@@ -59,5 +59,5 @@ survey_size <- function(error_margin = 0.05,
                'Population size (count)',
                'Survey sample (count)')
     tab.3 <- as.table(cbind(Variable, Values))
-   print(tab.3)
+    tab.3
 }
