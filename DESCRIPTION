@@ -11,7 +11,5 @@ LazyData: TRUE
 RoxygenNote: 6.0.1
 Depends: 
 	R (>= 3.3.3),
-Imports: 
-        pander
 Suggests: 
 	testthat

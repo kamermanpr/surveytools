@@ -67,8 +67,5 @@ survey_size <- function(sample_size = NULL,
                                       c,
                                       r))
     }
-    pander::pander(sample_df,
-                   digits = c(NULL, 2),
-                   emphasize.italics.rows = 1,
-                   justify = c('left', 'right'))
+    sample_df
 }
