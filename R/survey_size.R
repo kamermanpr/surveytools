@@ -36,33 +36,39 @@
 #' # sample size = 121
 #' }
 
-survey_size <- function(error_margin = 0.05,
+survey_size <- function(sample_size = NULL,
+                        error_margin = 0.05,
                         conf_level = 0.95,
                         response_distr = 0.5,
-                        population_size = NULL) {
-    cl <- conf_level
-    z <- qnorm(1 - ((1 - cl) / 2)) # critical z-score for confidence level
+                        population_size = 100000) {
     e <- error_margin
     r <- response_distr
     N <- population_size
+    n <- sample_size
+    c <- conf_level
+    z <- qnorm(1 - (1 - c)/2) # critical z-score for conf level (two tailed)
 
     if(is.null(N)){
         stop('Specify population size. See \'?survey_size\'', call. = TRUE)
     } else {
-    x <- z^2 * r * (1- r)
+    x <- z^2 * r * (1 - r)
     numerator <- N * x
     denominator <- (N - 1) * e^2 + x
     sample_size <- round(numerator / denominator)
 
-    sample_lst <- list(population_size = N,
-                       required_sample = sample_size,
-                       error_margin = e,
-                       confidence_level = cl,
-                       critical_z_score = z,
-                       response_distribution = r)
+    sample_df <- data.frame('Parameter' = c('REQUIRED SAMPLE SIZE',
+                                         'Population size',
+                                         'Margin of error',
+                                         'Confidence level',
+                                         'Response distribution'),
+                            'Value' = c(sample_size,
+                                      N,
+                                      e,
+                                      c,
+                                      r))
     }
-    class(sample_lst) <- 'ssize'
-    invisible(sample_lst)
-    sample_lst
+    pander::pander(sample_df,
+                   digits = c(NULL, 2),
+                   emphasize.italics.rows = 1,
+                   justify = c('left', 'right'))
 }
-
