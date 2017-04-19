@@ -8,5 +8,10 @@ Description: A collection of functions for designing and analysing market resear
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 5.0.1
-Suggests: testthat
+RoxygenNote: 6.0.1
+Depends: 
+	R (>= 3.3.3),
+Imports: 
+        pander
+Suggests: 
+	testthat
