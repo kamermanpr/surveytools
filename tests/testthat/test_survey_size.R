@@ -1,8 +1,9 @@
 library(surveytools)
-context('survey size')
 
-test_that("sample_size returns a list of 6 numeric items", {
-    expect_equal(class(survey_size(population_size = 100)), 'ssize')
-    expect_equal(survey_size(population_size = 20000)[[2]], 377)
-    expect_equal(length(survey_size(population_size = 100)), 6)
+context('survey_size')
+
+test_that("sample_size returns a 5 x 2 dataframe", {
+    expect_equal(class(survey_size(population_size = 100)), 'data.frame')
+    expect_equal(survey_size(population_size = 20000)$Value[[1]], 377)
+    expect_equal(nrow(survey_size(population_size = 100)), 5)
 })
