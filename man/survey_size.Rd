@@ -4,8 +4,8 @@
 \alias{survey_size}
 \title{Calculate the sample size of a survey.}
 \usage{
-survey_size(error_margin = 0.05, conf_level = 0.95, response_distr = 0.5,
-  population_size = NULL)
+survey_size(sample_size = NULL, error_margin = 0.05, conf_level = 0.95,
+  response_distr = 0.5, population_size = 1e+05)
 }
 \arguments{
 \item{error_margin}{The amount of error that can be tolerated, where the
@@ -47,4 +47,3 @@ survey_size(error_margin = 0.1, conf_level = 0.99, population_size = 450)
 # sample size = 121
 }
 }
-
